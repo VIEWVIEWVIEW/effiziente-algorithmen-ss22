@@ -2,6 +2,8 @@ import os
 import sys
 import time
 
+sys.setrecursionlimit(180000)
+
 def lcs_length(string_1, string_2):
     """lcs implementation nach Cormen et al p. 397"""
     m = len(string_1)
@@ -47,24 +49,26 @@ def print_lcs(b, string_1, i, j):
 
 
 ###### Konfiguration ######
-sys.setrecursionlimit(18000)
+#sys.setrecursionlimit(18000)
+def main():
+    path1 = "./tomate-virus.txt"
+    file_1 = open(path1, "r")
+    stripped_1 = ''.join([line.rstrip('\n') for line in file_1])
+    #
+    path2 = "botryosphaeria_dothidea_chrysovirus_1_uid382570.txt"
+    file_2 = open(path2, "r")
+    stripped_2 = ''.join([line.rstrip('\n') for line in file_2])
 
-path1 = "tomate-virus.txt"
-file_1 = open(path1, "r")
-stripped_1 = ''.join([line.rstrip('\n') for line in file_1])
-#
-path2 = "botryosphaeria_dothidea_chrysovirus_1_uid382570.txt"
-file_2 = open(path2, "r")
-stripped_2 = ''.join([line.rstrip('\n') for line in file_2])
+    ###### Start Messung ######
+    bench_start = time.time()
+    c, b = lcs_length(stripped_1, stripped_2)
+    print("Length:", c[len(stripped_1)][len(stripped_2)])
 
-###### Start Messung ######
-bench_start = time.time()
-c, b = lcs_length(stripped_1, stripped_2)
-print("Length:", c[len(stripped_1)][len(stripped_2)])
+    print_lcs(b, stripped_1, len(stripped_1), len(stripped_2))
+    print("\nDone!")
+    bench_end = time.time()
+    print('Laufzeit: {:.4f}s'.format(bench_end - bench_start))
+    ###### Ende Messung ######
 
-print_lcs(b, stripped_1, len(stripped_1), len(stripped_2))
-print("\nDone!")
-bench_end = time.time()
-print('Laufzeit: {:.4f}s'.format(bench_end - bench_start))
-###### Ende Messung ######
-
+if __name__ == '__main__':
+    main()

@@ -104,24 +104,29 @@ def print_lcs_reconstruct(cb, bb, string_1, string_2, d):
 ###### Konfiguration ######
 sys.setrecursionlimit(18000)
 
-#path1 = "E:\Google Drive\Studium\Kurse\Effiziente Algorithmen\Skripte\LCS\\tomate-virus.txt"
-#file_1 = open(path1, "r")
-#stripped_1 = ''.join([line.rstrip('\n') for line in file_1])
+def main():
+    path1 = "tomate-virus.txt"
+    file_1 = open(path1, "r")
+    stripped_1 = ''.join([line.rstrip('\n') for line in file_1])
 
-#path2 = "E:\Google Drive\Studium\Kurse\Effiziente Algorithmen\Skripte\LCS\\chrysovirus.txt"
-#file_2 = open(path2, "r")
-#stripped_2 = ''.join([line.rstrip('\n') for line in file_2])
+    path2 = "botryosphaeria_dothidea_chrysovirus_1_uid382570.txt"
+    file_2 = open(path2, "r")
+    stripped_2 = ''.join([line.rstrip('\n') for line in file_2])
 
-#d = round(math.sqrt(len(stripped_2) + 1)) # d=runden(wurzel(n+1))
-#print("d: ",d)
+    d = round(math.sqrt(len(stripped_2) + 1)) # d=runden(wurzel(n+1))
+    print("d: ",d)
 
-###### Start Messung ######
-#bench_start = time.time()
-#lenLCS, cb, bb = lcs_length(stripped_1, stripped_2, d)
-#print("Length:", lenLCS)
+    ###### Start Messung ######
+    bench_start = time.time()
+    lenLCS, cb, bb = lcs_length(stripped_1, stripped_2, d)
+    print("Length:", lenLCS)
 
-#print_lcs_reconstruct(cb, bb, stripped_1, stripped_2, d)
-#print("\nDone!")
-#bench_end = time.time()
-#print('Laufzeit: {:.4f}s'.format(bench_end - bench_start))
-###### Ende Messung ######
+    print_lcs_reconstruct(cb, bb, stripped_1, stripped_2, d)
+    print("\nDone!")
+    bench_end = time.time()
+    print('Laufzeit: {:.4f}s'.format(bench_end - bench_start))
+    ###### Ende Messung ######
+
+
+if __name__ == '__main__':
+    main()

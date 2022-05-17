@@ -27,15 +27,19 @@ def lcs_length(string_1, string_2):
     return l[rowIndex][n]
 
 
-sys.setrecursionlimit(18000)
+def main():
+    path1 = "E:\Google Drive\Studium\Kurse\Effiziente Algorithmen\Skripte\LCS\\tomate-virus.txt"
+    file_1 = open(path1, "r")
+    stripped_1 = ''.join([line.rstrip('\n') for line in file_1])
 
-#path1 = "E:\Google Drive\Studium\Kurse\Effiziente Algorithmen\Skripte\LCS\\tomate-virus.txt"
-#file_1 = open(path1, "r")
-#stripped_1 = ''.join([line.rstrip('\n') for line in file_1])
+    path2 = "E:\Google Drive\Studium\Kurse\Effiziente Algorithmen\Skripte\LCS\\chrysovirus.txt"
+    file_2 = open(path2, "r")
+    stripped_2 = ''.join([line.rstrip('\n') for line in file_2])
 
-#path2 = "E:\Google Drive\Studium\Kurse\Effiziente Algorithmen\Skripte\LCS\\chrysovirus.txt"
-#file_2 = open(path2, "r")
-#stripped_2 = ''.join([line.rstrip('\n') for line in file_2])
+    print("Length:", lcs_length(stripped_1, stripped_2))
+    print("\nDone!")
 
-#print("Length:", lcs_length(stripped_1, stripped_2))
-#print("\nDone!")
+
+if __name__ == '__main__':
+    sys.setrecursionlimit(18000)
+    main()
